@@ -1,0 +1,76 @@
+{
+  "hash": "a9d19f65",
+  "configHash": "d4887017",
+  "lockfileHash": "e3b0c442",
+  "browserHash": "bce3fc57",
+  "optimized": {
+    "@chakra-ui/react": {
+      "src": "../../node_modules/@chakra-ui/react/dist/index.mjs",
+      "file": "@chakra-ui_react.js",
+      "fileHash": "d771ef60",
+      "needsInterop": false
+    },
+    "@chakra-ui/theme-tools": {
+      "src": "../../node_modules/@chakra-ui/theme-tools/dist/index.mjs",
+      "file": "@chakra-ui_theme-tools.js",
+      "fileHash": "8c78f8be",
+      "needsInterop": false
+    },
+    "@chakra-ui/theme-utils": {
+      "src": "../../node_modules/@chakra-ui/theme-utils/dist/index.mjs",
+      "file": "@chakra-ui_theme-utils.js",
+      "fileHash": "2bc53585",
+      "needsInterop": false
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "700ec7dc",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "2c267aa4",
+      "needsInterop": true
+    },
+    "react-icons/bs": {
+      "src": "../../node_modules/react-icons/bs/index.mjs",
+      "file": "react-icons_bs.js",
+      "fileHash": "1c04b615",
+      "needsInterop": false
+    },
+    "react-icons/cg": {
+      "src": "../../node_modules/react-icons/cg/index.mjs",
+      "file": "react-icons_cg.js",
+      "fileHash": "f0e6781b",
+      "needsInterop": false
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "f7ce44cf",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-E4WE6WPX": {
+      "file": "chunk-E4WE6WPX.js"
+    },
+    "chunk-FFLO7VTN": {
+      "file": "chunk-FFLO7VTN.js"
+    },
+    "chunk-ZIYUGMGG": {
+      "file": "chunk-ZIYUGMGG.js"
+    },
+    "chunk-2CVX3UOB": {
+      "file": "chunk-2CVX3UOB.js"
+    },
+    "chunk-65KY755N": {
+      "file": "chunk-65KY755N.js"
+    },
+    "chunk-V4OQ3NZ2": {
+      "file": "chunk-V4OQ3NZ2.js"
+    }
+  }
+}
