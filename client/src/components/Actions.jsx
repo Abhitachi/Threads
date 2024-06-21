@@ -53,7 +53,7 @@ const Actions = ({ post : post_ }) => {
 		if (isReplying) return;
 		setIsReplying(true);
 		try {
-			const res = await fetch("/api/posts/reply/" + post._id, {
+			const res = await fetch(`/api/posts/replay/` + post._id, {
 				method: "PUT",
 				headers: {
 					"Content-Type": "application/json",
@@ -63,13 +63,13 @@ const Actions = ({ post : post_ }) => {
 			const data = await res.json();
 			if (data.error) return showToast("Error", data.error, "error");
 
-			const updatedPosts = posts.map((p) => {
-				if (p._id === post._id) {
-					return { ...p, replies: [...p.replies, data] };
-				}
-				return p;
-			});
-			setPosts(updatedPosts);
+			// const updatedPosts = posts.map((p) => {
+			// 	if (p._id === post._id) {
+			// 		return { ...p, replies: [...p.replies, data] };
+			// 	}
+			// 	return p;
+			// });
+			// setPosts(updatedPosts);
 			showToast("Success", "Reply posted successfully", "success");
 			onClose();
 			setReply("");
