@@ -5,6 +5,9 @@ const protectRoute = async (req, res, next) => {
   try {
     const token = req.cookies.jwt;
 
+    console.log(req.params.id, 'id')
+
+
     if (!token) {
       return res.status(401).json({ message: "Unauthorized error" });
     }
@@ -14,6 +17,7 @@ const protectRoute = async (req, res, next) => {
     
     //add the user to req object
     req.user = user;
+    console.log(req.user._id, 'id');
     next();
   } catch (err) {
     res.status(500).json({ message: err.message });
