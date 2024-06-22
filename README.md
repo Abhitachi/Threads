@@ -1,7 +1,7 @@
 
-    <h1>Threads App Clone</h1>
+<h1>Threads App Clone</h1>
 
-    <h2>Table of Contents</h2>
+ <h2>Table of Contents</h2>
     <ul>
         <li><a href="#introduction">Introduction</a></li>
         <li><a href="#features">Features</a></li>
@@ -18,11 +18,11 @@
         <li><a href="#license">License</a></li>
     </ul>
 
-    <h2 id="introduction">Introduction</h2>
+<h2 id="introduction">Introduction</h2>
     <p>The Threads App Clone is a social media application built using the MERN stack (MongoDB, Express, React, Node.js). It allows users to sign up, log in, create and update profiles, follow/unfollow other users, and manage their session through login and logout functionalities. Additionally, users can create, read, update, and delete posts, like/unlike posts, and reply to posts.</p>
 
-    <h2 id="features">Features</h2>
-    <ul>
+<h2 id="features">Features</h2>
+<ul>
         <li>User Authentication (Sign Up, Log In, Log Out)</li>
         <li>Profile Management</li>
         <li>Follow/Unfollow Users</li>
@@ -33,8 +33,8 @@
         <li>Reply to Posts</li>
     </ul>
 
-    <h2 id="tech-stack">Tech Stack</h2>
-    <ul>
+ <h2 id="tech-stack">Tech Stack</h2>
+<ul>
         <li><strong>Frontend:</strong> React.js</li>
         <li><strong>Backend:</strong> Node.js, Express.js</li>
         <li><strong>Database:</strong> MongoDB</li>
@@ -42,7 +42,7 @@
         <li><strong>Middleware:</strong> Express Middleware</li>
     </ul>
 
-    <h2 id="installation">Installation</h2>
+ <h2 id="installation">Installation</h2>
     <ol>
         <li><strong>Clone the repository:</strong>
             <pre><code>git clone https://github.com/your-username/threads-app-clone.git
@@ -79,8 +79,8 @@ npm start</code></pre>
         </li>
     </ol>
 
-    <h2 id="usage">Usage</h2>
-    <ul>
+<h2 id="usage">Usage</h2>
+<ul>
         <li><strong>Sign Up:</strong> Create a new account.</li>
         <li><strong>Log In:</strong> Access your account.</li>
         <li><strong>Profile Management:</strong> View and update your profile information.</li>
@@ -88,7 +88,7 @@ npm start</code></pre>
         <li><strong>Post Management:</strong> Create, read, update, delete, like/unlike, and reply to posts.</li>
     </ul>
 
-    <h2 id="api-endpoints">API Endpoints</h2>
+<h2 id="api-endpoints">API Endpoints</h2>
     <h3 id="user-endpoints">User Endpoints</h3>
     <ul>
         <li><strong>GET /profile/:query</strong>
@@ -132,7 +132,7 @@ npm start</code></pre>
         </li>
     </ul>
 
-    <h3 id="post-endpoints">Post Endpoints</h3>
+<h3 id="post-endpoints">Post Endpoints</h3>
     <ul>
         <li><strong>GET /feed</strong>
             <p>Fetch posts for the authenticated user's feed.</p>
@@ -176,6 +176,6 @@ npm start</code></pre>
         </li>
     </ul>
 
-    <h2 id="contributing">Contributing</h2>
+<h2 id="contributing">Contributing</h2>
     <p>Contributions are welcome! Please open an issue or submit a pull request for any improvements or additions.</p>
 
