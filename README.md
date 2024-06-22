@@ -19,7 +19,7 @@
     </ul>
 
 <h2 id="introduction">Introduction</h2>
-    <p>The Threads App Clone is a social media application built using the MERN stack (MongoDB, Express, React, Node.js). It allows users to sign up, log in, create and update profiles, follow/unfollow other users, and manage their session through login and logout functionalities. Additionally, users can create, read, update, and delete posts, like/unlike posts, and reply to posts.</p>
+    <p>Threads App Clone is a social media application built using the MERN stack (MongoDB, Express, React, Node.js). it allows users to sign up, log in, create and update profiles, follow/unfollow other users, and manage their session through login and logout functionalities. additionally, users can create, read, update, and delete posts, like/unlike posts, and reply to posts.</p>
 
 <h2 id="features">Features</h2>
 <ul>
