@@ -11,7 +11,7 @@ import useShowToast from '../hooks/useShowToast';
 const UserHeader = ({user}) => {
     const showToast = useShowToast()
     const currentUser = useRecoilValue(userAtom);//logged in user
-    const [following, setFollowing] = useState(user.followers.includes(currentUser._id));
+    const [following, setFollowing] = useState(user.followers.includes(currentUser?._id));
     const [updating , setUpdating] = useState(false);
    
     const copyURL = () => {
@@ -48,7 +48,7 @@ const UserHeader = ({user}) => {
                 user.followers.pop();
             }else {
                 showToast('success',`followed ${user.name}`, 'success');
-                user.followers.push(currentUser._id);
+                user.followers.push(currentUser?._id);
             }  
             setFollowing(!following);
             // console.log(following, 'following');
@@ -63,7 +63,7 @@ const UserHeader = ({user}) => {
     <VStack gap={4} alignItems={'start'}>
         <Flex justifyContent={"space-between"} w={'full'} >
             <Box>
-            <Text fontSize={'2xl'} frontWeight={'bold'}>
+            <Text fontSize={'2xl'} fontWeight={'bold'}>
                 {user.name}
             </Text>
             <Flex gap={2} alignItems={"center"} >
@@ -89,15 +89,15 @@ const UserHeader = ({user}) => {
             </Box>
         </Flex>
 
-        <Text>{user.bio}</Text>
+        <Text>{user?.bio}</Text>
 
-        {currentUser._id === user._id && (
+        {currentUser?._id === user._id && (
             <Link as={RouterLink} to='/update'>
                 <Button size={'sm'}>Update Profile</Button>
             </Link>
         )}
 
-        {currentUser._id !== user._id && (
+        {currentUser?._id !== user._id && (
             <Button size={'sm'} onClick={handleFollowUnfollow} isLoading={updating}>{following ? 'UnFollow' : 'Follow'}</Button>
         )}
 

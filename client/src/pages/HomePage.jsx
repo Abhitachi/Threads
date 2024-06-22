@@ -41,9 +41,9 @@ const HomePage = () => {
         </Flex>
       ) }
 
-      {!loading && posts.length == 0 && (<h1>No Posts found for you, follow some users to see their posts</h1>)}
+      {!loading && posts?.length == 0 && (<h1>No Posts found for you, follow some users to see their posts</h1>)}
 
-      {posts.map((post) => (
+      {posts?.map((post) => (
         <Post key = {post._id} post={post} postedBy = {post.postedBy}/>
       ))}
 

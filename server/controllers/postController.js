@@ -145,6 +145,7 @@ const getFeedPosts = async (req, res) => {
   try {
     const userId = req.user._id;
     const user = await User.findById(userId);
+    console.log(user, "user");
 
     if (!user) {
       return res.status(404).json({ error: "user not found" });
@@ -162,11 +163,31 @@ const getFeedPosts = async (req, res) => {
   }
 };
 
+const getUserPosts = async (req, res) => {
+  const { username } = req.params;
+  console.log(username);
+  try {
+    const user = await User.findOne({ username });
+    console.log(user, "user");
+    if (!user) {
+      res.status(404).json({ error: "user not found" });
+    }
+    const posts = await Post.find({ postedBy: user._id }).sort({
+      createdAt: -1,
+    });
+    console.log(posts, "posts");
+    return res.status(200).json(posts);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 export {
   createPost,
   deletePost,
   getFeedPosts,
   getPost,
+  getUserPosts,
   likeUnlikePost,
   replayToPost,
 };

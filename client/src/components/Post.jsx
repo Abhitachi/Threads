@@ -1,7 +1,10 @@
+import { DeleteIcon } from '@chakra-ui/icons';
 import { Avatar, Box, Flex, Image, Text } from '@chakra-ui/react';
 import { formatDistanceToNow } from 'date-fns';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import userAtom from '../atoms/userAtom';
 import useShowToast from '../hooks/useShowToast';
 import Actions from './Actions';
 
@@ -9,6 +12,7 @@ import Actions from './Actions';
 const Post = ({post, postedBy}) => {
     const [user, setUser] = useState(null)
     const showToast = useShowToast()
+    const currentUser = useRecoilValue(userAtom)
         // console.log(postedBy, post);
     console.log(post);
 
@@ -96,6 +100,10 @@ const Post = ({post, postedBy}) => {
                         <Text fontSize={'sm'} size={'sm'} textAlign={'right'} width={36} color={'gray.lights'}>
                             {formatDistanceToNow(new Date(post.createdAt), new Date())} ago </Text>
                         {/* <BsThreeDots /> */}
+                        { currentUser?._id === user?.id && (
+
+                        <DeleteIcon size={20} />
+                        )}
                     </Flex>
                 </Flex>
 

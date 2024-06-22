@@ -62,7 +62,8 @@ const Actions = ({ post : post_ }) => {
 			});
 			const data = await res.json();
 			if (data.error) return showToast("Error", data.error, "error");
-
+			setPost({...post, replies:[...post.replies,data.reply]});
+			
 			// const updatedPosts = posts.map((p) => {
 			// 	if (p._id === post._id) {
 			// 		return { ...p, replies: [...p.replies, data] };
