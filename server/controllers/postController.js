@@ -4,7 +4,11 @@ import User from "../models/userModel.js";
 
 const createPost = async (req, res) => {
   try {
-    const { postedBy, text, img } = req.body;
+    const { postedBy, text } = req.body;
+
+    let { img } = req.body;
+
+    console.log(img, "img");
 
     if (!postedBy || !text) {
       return res
@@ -30,7 +34,7 @@ const createPost = async (req, res) => {
 
     if (img) {
       const uploadedResponse = await cloudinary.uploader.upload(img);
-      const img = uploadResponse.secure_url;
+      img = uploadedResponse.secure_url;
     }
 
     const newPost = new Post({ postedBy, text, img });
@@ -52,22 +56,30 @@ const getPost = async (req, res) => {
     return res.status(404).json({ error: "post not found" });
   }
 
-  return res.status(200).json({ post });
+  return res.status(200).json(post);
 };
 
 const deletePost = async (req, res) => {
   const postId = req.params.id;
 
   try {
+
+    //check if the postId is valid
     const post = await Post.findById(postId);
 
-    console.log(post.postedBy._id, "posted user id");
+    // console.log(post.postedBy._id, "posted user id");
 
     if (!post) {
       return res.status(404).json({ error: "Post not found" });
     }
+    //check if the user is author of the post
     if (post.postedBy._id.toString() !== req.user._id.toString()) {
       return res.status(400).json({ error: "unauthorised to delete the post" });
+    }
+    //if contains image then delete image from cloudinary
+    if (post.img) {
+      const imgId = post.img.split("/").pop().split(".")[0];//to get the image id
+      await cloudinary.uploader.destroy(imgId);//to delete image from cloudinary
     }
 
     await Post.findByIdAndDelete(postId);
@@ -124,18 +136,24 @@ const replayToPost = async (req, res) => {
       return res.status(400).json({ error: "Text field is required" });
     }
 
+    //if there is a text, then figure out the post that it belongs to
     const post = await Post.findById(postId);
     if (!post) {
       return res.status(404).json({ error: "post not found" });
     }
 
+    //create a reply object
     const reply = { userId, text, userProfilePic, username };
 
+    //add the reply to the post's replies array
     post.replies.push(reply);
 
+    //save the post
     await post.save();
 
+    //return the reply object
     res.status(200).json(reply);
+
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

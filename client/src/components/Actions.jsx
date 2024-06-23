@@ -5,14 +5,14 @@ import userAtom from "../atoms/userAtom";
 import useShowToast from "../hooks/useShowToast";
 
 const Actions = ({ post : post_ }) => {
-	console.log(post_);
+	// console.log(post_);
 	const user = useRecoilValue(userAtom)
-	const [liked, setLiked] = useState(post_?.likes?.includes(user?._id));
-	const [post, setPost] = useState(post_);
-	const [isLiking, setIsLiking] = useState(false);
-	const [reply, setReply] = useState('');
-	const [isReplying, setIsReplying] = useState(false);
-	const { isOpen, onOpen, onClose } = useDisclosure();
+	const [liked, setLiked] = useState(post_?.likes?.includes(user?._id));//checking if user has liked the post
+	const [post, setPost] = useState(post_);//getting post
+	const [isLiking, setIsLiking] = useState(false);//checking if post is being liked
+	const [reply, setReply] = useState('');// state for setting comment
+	const [isReplying, setIsReplying] = useState(false); // checking if comment is being posted
+	const { isOpen, onOpen, onClose } = useDisclosure();//modal functions
 	const showToast = useShowToast();
 
 
@@ -50,8 +50,8 @@ const Actions = ({ post : post_ }) => {
 
 	const handleReply = async () => {
 		if (!user) return showToast("Error", "You must be logged in to reply to a post", "error");
-		if (isReplying) return;
-		setIsReplying(true);
+		if (isReplying) return; //if is user is replying then return
+		setIsReplying(true);//else set  isReplying to true
 		try {
 			const res = await fetch(`/api/posts/replay/` + post._id, {
 				method: "PUT",
@@ -61,7 +61,10 @@ const Actions = ({ post : post_ }) => {
 				body: JSON.stringify({ text: reply }),
 			});
 			const data = await res.json();
+
 			if (data.error) return showToast("Error", data.error, "error");
+
+			//add reply to post's replies array so we can render it on the frontend
 			setPost({...post, replies:[...post.replies,data.reply]});
 			
 			// const updatedPosts = posts.map((p) => {
@@ -103,7 +106,7 @@ const Actions = ({ post : post_ }) => {
 			</svg>
 
 			<svg aria-label='Comment' color='' fill='' height='20' role='img' viewBox='0 0 24 24' width='20'
-				onClick={onOpen}
+				onClick={onOpen} //open modal : it sets the isOpen state to true
 			>
 				<title>Comment</title>
 				<path
@@ -176,20 +179,20 @@ const Actions = ({ post : post_ }) => {
 				<Modal isOpen={isOpen} onClose={onClose}>
 				<ModalOverlay />
 				<ModalContent>
-					<ModalHeader></ModalHeader>
+					<ModalHeader></ModalHeader> {/* models header label */}
 					<ModalCloseButton />
 					<ModalBody pb={6}>
 						<FormControl>
 							<Input
 								placeholder='Reply goes here..'
 								value={reply}
-								onChange={(e) => setReply(e.target.value)}
+								onChange={(e) => setReply(e.target.value)} //setting the reply
 							/>
 						</FormControl>
 					</ModalBody>
 
 					<ModalFooter>
-						<Button colorScheme='blue' size={"sm"} mr={3} isLoading={isReplying} onClick={handleReply}>
+						<Button colorScheme='blue' size={"sm"} mr={3} isLoading={isReplying} onClick={handleReply}> 
 							Reply
 						</Button>
 					</ModalFooter>
