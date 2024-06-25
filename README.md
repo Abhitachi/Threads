@@ -1,5 +1,5 @@
 
-<h1>Threads App Clone &nbsp;&nbsp;&nbsp;  <a href='https://threads-od4x.onrender.com/auth' style={cursor:pointer}>Link</a></h1> 
+<h1>Threads App Clone &nbsp;&nbsp;&nbsp; 🔗  <a href='https://threads-od4x.onrender.com/auth' style={cursor:pointer}>Link</a></h1> 
 
  <h2>Table of Contents</h2>
     <ul>
